@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #f4f6f8; }
+  a { color: #3a6ea5; }
+  a:hover { color: #2b5480; }
+</style>
+</helmet>
+<div style="width: 2320px; height: 1580px; position: relative; background: #ffffff; fontFamily: Lato, 'Helvetica Neue', Arial, sans-serif; color: #1f2933; overflow: hidden">
+
+  <!-- título -->
+  <div style="position: absolute; left: 40px; top: 26px; display: flex; alignItems: baseline; gap: 22px">
+    <div style="fontSize: 34px; fontWeight: 900; letterSpacing: -0.01em">CloudWeb — Flujo de despliegue PaaS</div>
+    <div style="fontSize: 17px; color: #5b6b7b">Aplicaciones Python desde Git con Docker y Kubernetes sobre infraestructura local</div>
+  </div>
+  <sc-if value="{{ showLegend }}" hint-placeholder-val="{{ true }}">
+    <div style="position: absolute; right: 40px; top: 24px; display: flex; gap: 26px; fontSize: 14px; alignItems: center">
+      <div style="display: flex; alignItems: center; gap: 8px"><div style="width: 26px; height: 14px; background: #e8f1fb; border: 1.5px solid #3a6ea5; borderRadius: 2px"></div><span>Cliente / Interfaz</span></div>
+      <div style="display: flex; alignItems: center; gap: 8px"><div style="width: 26px; height: 14px; background: #fdf1de; border: 1.5px solid #b07322; borderRadius: 2px"></div><span>Control / PaaS Core</span></div>
+      <div style="display: flex; alignItems: center; gap: 8px"><div style="width: 26px; height: 14px; background: #e4f2ee; border: 1.5px solid #2e7d6b; borderRadius: 2px"></div><span>Infraestructura y Red</span></div>
+    </div>
+  </sc-if>
+
+  <!-- carriles -->
+  <div style="position: absolute; left: 20px; top: 96px; width: 2280px; height: 270px; background: #f6faff; border: 1.5px solid #b9d3ea; borderRadius: 4px"></div>
+  <div style="position: absolute; left: 20px; top: 96px; width: 130px; height: 270px; background: #3a6ea5; borderRadius: 3px 0 0 3px; display: flex; alignItems: center; justifyContent: center">
+    <div style="transform: rotate(-90deg); color: #ffffff; fontSize: 18px; fontWeight: 700; whiteSpace: nowrap; letterSpacing: 0.04em">1 · CLIENTE / INTERFAZ</div>
+  </div>
+
+  <div style="position: absolute; left: 20px; top: 382px; width: 2280px; height: 520px; background: #fffbf4; border: 1.5px solid #e6c99b; borderRadius: 4px"></div>
+  <div style="position: absolute; left: 20px; top: 382px; width: 130px; height: 520px; background: #b07322; borderRadius: 3px 0 0 3px; display: flex; alignItems: center; justifyContent: center">
+    <div style="transform: rotate(-90deg); color: #ffffff; fontSize: 18px; fontWeight: 700; whiteSpace: nowrap; letterSpacing: 0.04em">2 · CONTROL / PAAS CORE</div>
+  </div>
+
+  <div style="position: absolute; left: 20px; top: 918px; width: 2280px; height: 580px; background: #f5fbf9; border: 1.5px solid #a9d4c8; borderRadius: 4px"></div>
+  <div style="position: absolute; left: 20px; top: 918px; width: 130px; height: 580px; background: #2e7d6b; borderRadius: 3px 0 0 3px; display: flex; alignItems: center; justifyContent: center">
+    <div style="transform: rotate(-90deg); color: #ffffff; fontSize: 18px; fontWeight: 700; whiteSpace: nowrap; letterSpacing: 0.04em">3 · INFRAESTRUCTURA Y RED</div>
+  </div>
+
+  <!-- conectores -->
+  <div style="position: absolute; left: 0; top: 0; width: 2320px; height: 1580px; pointerEvents: none">{{ connectors }}</div>
+
+  <!-- ===== CAPA 1 ===== -->
+  <div style="position: absolute; left: 200px; top: 170px; width: 180px; height: 78px; background: #3a6ea5; color: #ffffff; borderRadius: 39px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 2px; boxShadow: 0 1px 2px rgba(0,0,0,0.12)">
+    <div style="fontSize: 16px; fontWeight: 700; textAlign: center; lineHeight: 1.15">Usuario /<br>Desarrollador</div>
+  </div>
+  <div style="position: absolute; left: 420px; top: 170px; width: 180px; height: 78px; background: #d6e6f6; border: 2px solid #3a6ea5; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px">
+    <div style="fontSize: 16px; fontWeight: 700; textAlign: center">Panel Web CloudWeb</div>
+    <div style="fontSize: 12.5px; color: #4a5b6b">interfaz única</div>
+  </div>
+  <div style="position: absolute; left: 640px; top: 170px; width: 140px; height: 78px; background: #e8f1fb; border: 1.5px solid #3a6ea5; borderRadius: 4px; display: flex; alignItems: center; justifyContent: center; textAlign: center; fontSize: 15px; fontWeight: 700; padding: 0 8px; boxSizing: border-box">Inicio de sesión</div>
+  <div style="position: absolute; left: 820px; top: 170px; width: 140px; height: 78px; background: #e8f1fb; border: 1.5px solid #3a6ea5; borderRadius: 4px; display: flex; alignItems: center; justifyContent: center; textAlign: center; fontSize: 15px; fontWeight: 700; padding: 0 8px; boxSizing: border-box">Crear proyecto</div>
+  <div style="position: absolute; left: 1000px; top: 170px; width: 170px; height: 78px; background: #e8f1fb; border: 1.5px solid #3a6ea5; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center; padding: 0 10px; boxSizing: border-box">
+    <div style="fontSize: 15px; fontWeight: 700">Conectar repositorio Git</div>
+    <div style="fontSize: 12.5px; color: #4a5b6b">URL del repositorio</div>
+  </div>
+  <div style="position: absolute; left: 1210px; top: 170px; width: 180px; height: 78px; background: #e8f1fb; border: 1.5px solid #3a6ea5; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center; padding: 0 10px; boxSizing: border-box">
+    <div style="fontSize: 15px; fontWeight: 700">Configurar aplicación y recursos</div>
+    <div style="fontSize: 12.5px; color: #4a5b6b">CPU · RAM · puerto</div>
+  </div>
+  <div style="position: absolute; left: 1430px; top: 170px; width: 170px; height: 78px; background: #c3daf1; border: 2px solid #3a6ea5; borderRadius: 4px; display: flex; alignItems: center; justifyContent: center; textAlign: center; fontSize: 15.5px; fontWeight: 700; padding: 0 10px; boxSizing: border-box">Solicitar despliegue</div>
+  <div style="position: absolute; left: 2000px; top: 170px; width: 210px; height: 78px; background: #3a6ea5; color: #ffffff; borderRadius: 39px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 2px">
+    <div style="fontSize: 15.5px; fontWeight: 700; textAlign: center">Mostrar URL de la aplicación</div>
+    <div style="fontSize: 13px; opacity: 0.9">{{ appUrl }}</div>
+  </div>
+
+  <!-- ===== CAPA 2 ===== -->
+  <div style="position: absolute; left: 200px; top: 460px; width: 160px; height: 78px; background: #fbe6c8; border: 2px solid #b07322; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15.5px; fontWeight: 700">API / Backend</div>
+    <div style="fontSize: 12.5px; color: #6b5730">recibe la solicitud</div>
+  </div>
+  <div style="position: absolute; left: 400px; top: 469px; width: 140px; height: 60px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 1px; textAlign: center">
+    <div style="fontSize: 14.5px; fontWeight: 700">Validación</div>
+    <div style="fontSize: 11.5px; color: #6b5730">cuotas · config</div>
+  </div>
+  <div style="position: absolute; left: 400px; top: 660px; width: 170px; height: 64px; background: #ffffff; border: 1.5px dashed #b07322; borderRadius: 32px; display: flex; alignItems: center; justifyContent: center; textAlign: center; fontSize: 14px; fontWeight: 700; color: #8a4b1a; padding: 0 10px; boxSizing: border-box">Error mostrado en el Panel</div>
+
+  <div style="position: absolute; left: 580px; top: 460px; width: 140px; height: 78px; background: #fdf1de; border: 1.5px solid #b07322; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Git</div>
+    <div style="fontSize: 12.5px; color: #6b5730">clona el código</div>
+  </div>
+  <div style="position: absolute; left: 760px; top: 460px; width: 130px; height: 78px; background: #fdf1de; border: 1.5px solid #b07322; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Build</div>
+    <div style="fontSize: 12.5px; color: #6b5730">dependencias</div>
+  </div>
+  <div style="position: absolute; left: 930px; top: 460px; width: 150px; height: 78px; background: #fdf1de; border: 1.5px solid #b07322; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Docker</div>
+    <div style="fontSize: 12.5px; color: #6b5730">imagen de la app</div>
+  </div>
+  <div style="position: absolute; left: 1120px; top: 452px; width: 160px; height: 94px; background: #fdf1de; border: 1.5px solid #b07322; borderRadius: 50% / 18px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center; padding: 0 12px; boxSizing: border-box">
+    <div style="fontSize: 15px; fontWeight: 700">Registro de imágenes</div>
+    <div style="fontSize: 12.5px; color: #6b5730">push / pull</div>
+  </div>
+  <div style="position: absolute; left: 1320px; top: 460px; width: 140px; height: 78px; background: #fbe6c8; border: 2px solid #b07322; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Kubernetes</div>
+    <div style="fontSize: 12.5px; color: #6b5730">API server</div>
+  </div>
+  <div style="position: absolute; left: 1500px; top: 460px; width: 150px; height: 78px; background: #fdf1de; border: 1.5px solid #b07322; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Deployment</div>
+    <div style="fontSize: 12.5px; color: #6b5730">réplicas</div>
+  </div>
+  <div style="position: absolute; left: 1690px; top: 460px; width: 120px; height: 78px; background: #fdf1de; border: 1.5px solid #b07322; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Pod</div>
+    <div style="fontSize: 12.5px; color: #6b5730">Python</div>
+  </div>
+  <div style="position: absolute; left: 1850px; top: 460px; width: 130px; height: 78px; background: #fdf1de; border: 1.5px solid #b07322; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Service</div>
+    <div style="fontSize: 12.5px; color: #6b5730">ClusterIP</div>
+  </div>
+
+  <div style="position: absolute; left: 1620px; top: 700px; width: 150px; height: 78px; background: #fdf1de; border: 1.5px solid #b07322; borderRadius: 4px; display: flex; alignItems: center; justifyContent: center; textAlign: center; fontSize: 15px; fontWeight: 700">Monitoreo</div>
+  <div style="position: absolute; left: 1810px; top: 700px; width: 190px; height: 78px; background: #fdf1de; border: 1.5px solid #b07322; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 6px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Métricas</div>
+    <div style="display: flex; gap: 6px">
+      <span style="fontSize: 11.5px; background: #f6e3c4; borderRadius: 3px; padding: 2px 6px">CPU</span>
+      <span style="fontSize: 11.5px; background: #f6e3c4; borderRadius: 3px; padding: 2px 6px">RAM</span>
+      <span style="fontSize: 11.5px; background: #f6e3c4; borderRadius: 3px; padding: 2px 6px">Disco</span>
+    </div>
+  </div>
+  <div style="position: absolute; left: 2040px; top: 700px; width: 150px; height: 78px; background: #fbe6c8; border: 2px solid #b07322; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center; padding: 0 8px; boxSizing: border-box">
+    <div style="fontSize: 15px; fontWeight: 700">Autoscaling</div>
+    <div style="fontSize: 12px; color: #6b5730">Pods según demanda</div>
+  </div>
+
+  <!-- ===== CAPA 3 ===== -->
+  <div style="position: absolute; left: 200px; top: 990px; width: 180px; height: 78px; background: #d3ece4; border: 2px solid #2e7d6b; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center; padding: 0 10px; boxSizing: border-box">
+    <div style="fontSize: 15px; fontWeight: 700">Maquina Fisica</div>
+    
+  </div>
+  <div style="position: absolute; left: 420px; top: 990px; width: 140px; height: 78px; background: #e4f2ee; border: 1.5px solid #2e7d6b; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Proxmox</div>
+    <div style="fontSize: 12.5px; color: #3c5a52">hipervisor</div>
+  </div>
+  <div style="position: absolute; left: 600px; top: 990px; width: 160px; height: 78px; background: #e4f2ee; border: 1.5px solid #2e7d6b; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Máquinas virtuales</div>
+    <div style="fontSize: 12.5px; color: #3c5a52">nodos del clúster</div>
+  </div>
+  <div style="position: absolute; left: 800px; top: 990px; width: 150px; height: 78px; background: #e4f2ee; border: 1.5px solid #2e7d6b; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Kubernetes</div>
+    <div style="fontSize: 12.5px; color: #3c5a52">clúster activo</div>
+  </div>
+  <div style="position: absolute; left: 990px; top: 990px; width: 160px; height: 78px; background: #e4f2ee; border: 1.5px solid #2e7d6b; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center; padding: 0 8px; boxSizing: border-box">
+    <div style="fontSize: 15px; fontWeight: 700">Docker / Contenedores</div>
+    <div style="fontSize: 12.5px; color: #3c5a52">runtime</div>
+  </div>
+  <div style="position: absolute; left: 1190px; top: 982px; width: 160px; height: 94px; background: #e4f2ee; border: 1.5px solid #2e7d6b; borderRadius: 50% / 18px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center; padding: 0 12px; boxSizing: border-box">
+    <div style="fontSize: 14.5px; fontWeight: 700">CPU, RAM y almacenamiento</div>
+    <div style="fontSize: 12px; color: #3c5a52">recursos del nodo</div>
+  </div>
+
+  <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+    <div style="position: absolute; left: 1390px; top: 975px; width: 230px; height: 108px; background: #ffffff; border: 1.5px dashed #2e7d6b; borderRadius: 4px; display: flex; flexDirection: column; justifyContent: center; gap: 5px; padding: 0 14px; boxSizing: border-box">
+      <div style="fontSize: 14.5px; fontWeight: 700">Aislamiento de recursos</div>
+      <div style="fontSize: 12.5px; color: #3c5a52; lineHeight: 1.35">Límites de CPU y RAM por aplicación; cada proyecto se ejecuta sin afectar a los demás.</div>
+    </div>
+    <div style="position: absolute; left: 1660px; top: 975px; width: 210px; height: 108px; background: #ffffff; border: 1.5px dashed #2e7d6b; borderRadius: 4px; display: flex; flexDirection: column; justifyContent: center; gap: 5px; padding: 0 14px; boxSizing: border-box">
+      <div style="fontSize: 14.5px; fontWeight: 700">Red local</div>
+      <div style="fontSize: 12.5px; color: #3c5a52; lineHeight: 1.35">Tráfico interno entre nodos, Service y Pods; resolución de dominios .local.</div>
+    </div>
+  </sc-if>
+
+  <div style="position: absolute; left: 200px; top: 1178px; fontSize: 14px; fontWeight: 700; color: #2e7d6b; letterSpacing: 0.06em">FLUJO DE ACCESO A LA APLICACIÓN</div>
+  <div style="position: absolute; left: 200px; top: 1240px; width: 180px; height: 78px; background: #3a6ea5; color: #ffffff; borderRadius: 39px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 2px; textAlign: center">
+    <div style="fontSize: 15.5px; fontWeight: 700">Usuario</div>
+    <div style="fontSize: 12.5px; opacity: 0.9">navegador</div>
+  </div>
+  <div style="position: absolute; left: 420px; top: 1240px; width: 150px; height: 78px; background: #d3ece4; border: 2px solid #2e7d6b; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">Traefik</div>
+    <div style="fontSize: 12.5px; color: #3c5a52">ingress controller</div>
+  </div>
+  <div style="position: absolute; left: 610px; top: 1240px; width: 160px; height: 78px; background: #e4f2ee; border: 1.5px solid #2e7d6b; borderRadius: 4px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 3px; textAlign: center">
+    <div style="fontSize: 15px; fontWeight: 700">IngressRoute</div>
+    <div style="fontSize: 12.5px; color: #3c5a52">regla de host</div>
+  </div>
+  <div style="position: absolute; left: 810px; top: 1240px; width: 130px; height: 78px; background: #e4f2ee; border: 1.5px solid #2e7d6b; borderRadius: 4px; display: flex; alignItems: center; justifyContent: center; fontSize: 15px; fontWeight: 700">Service</div>
+  <div style="position: absolute; left: 980px; top: 1240px; width: 120px; height: 78px; background: #e4f2ee; border: 1.5px solid #2e7d6b; borderRadius: 4px; display: flex; alignItems: center; justifyContent: center; fontSize: 15px; fontWeight: 700">Pod</div>
+  <div style="position: absolute; left: 1140px; top: 1240px; width: 260px; height: 78px; background: #2e7d6b; color: #ffffff; borderRadius: 39px; display: flex; flexDirection: column; alignItems: center; justifyContent: center; gap: 2px; textAlign: center">
+    <div style="fontSize: 16px; fontWeight: 700">Aplicación Python disponible</div>
+    <div style="fontSize: 13.5px; opacity: 0.92">{{ appUrl }}</div>
+  </div>
+
+  <!-- etiquetas de conectores -->
+  <div style="position: absolute; left: 1480px; top: 302px; background: #ffffff; border: 1px solid #d7dee6; borderRadius: 3px; padding: 3px 9px; fontSize: 12.5px; color: #3f4c5a">POST /deployments</div>
+  <div style="position: absolute; left: 548px; top: 468px; background: #ffffff; padding: 1px 5px; fontSize: 12.5px; fontWeight: 700; color: #2e7d6b">Sí</div>
+  <div style="position: absolute; left: 478px; top: 590px; background: #ffffff; padding: 1px 5px; fontSize: 12.5px; fontWeight: 700; color: #a4401c">No</div>
+  <div style="position: absolute; left: 900px; top: 848px; background: #ffffff; border: 1px solid #d7dee6; borderRadius: 3px; padding: 3px 9px; fontSize: 12.5px; color: #3f4c5a">planifica Pods sobre nodos reales</div>
+  <div style="position: absolute; left: 1560px; top: 848px; background: #ffffff; padding: 3px 8px; fontSize: 12.5px; color: #3f4c5a">ajusta réplicas</div>
+  <div style="position: absolute; left: 386px; top: 1248px; background: #f5fbf9; padding: 1px 6px; fontSize: 12.5px; fontWeight: 700; color: #2e7d6b">HTTP</div>
+  <div style="position: absolute; left: 1620px; top: 1246px; background: #f5fbf9; border: 1px solid #cfe3dc; borderRadius: 3px; padding: 3px 9px; fontSize: 12.5px; color: #3f4c5a">URL entregada al usuario</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:2320,&quot;height&quot;:1580},&quot;appUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;app.local&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showLegend&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Elementos opcionales&quot;},&quot;showNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Elementos opcionales&quot;}}">
+const C = { blue: "#3a6ea5", amber: "#b07322", green: "#2e7d6b", gray: "#7b8794", red: "#a4401c" };
+
+class Component extends DCLogic {
+  arrow(points, color, opts) {
+    const o = opts || {};
+    const d = points.map((p, i) => (i === 0 ? "M" : "L") + p[0] + " " + p[1]).join(" ");
+    return React.createElement("path", {
+      key: o.key, d, fill: "none", stroke: color, strokeWidth: o.w || 1.8,
+      strokeDasharray: o.dash || undefined, markerEnd: "url(#ah-" + o.head + ")"
+    });
+  }
+
+  renderVals() {
+    const a = [];
+    let n = 0;
+    const A = (pts, color, opts) => {
+      const head = (opts && opts.headColor) || color;
+      const key = "a" + n++;
+      a.push(this.arrow(pts, color, Object.assign({ key, head: headKey(head) }, opts || {})));
+    };
+    const heads = {};
+    function headKey(color) { heads[color] = true; return color.replace("#", ""); }
+
+    // Capa 1
+    [[380, 420], [600, 640], [780, 820], [960, 1000], [1170, 1210], [1390, 1430]].forEach(([x1, x2]) =>
+      A([[x1, 209], [x2 - 8, 209]], C.blue));
+
+    // 1 → 2
+    A([[1515, 248], [1515, 330], [280, 330], [280, 452]], C.gray);
+
+    // Capa 2 fila principal
+    A([[360, 499], [392, 499]], C.amber);
+    [[540, 580], [720, 760], [890, 930], [1080, 1120], [1280, 1320], [1460, 1500], [1650, 1690], [1810, 1850]].forEach(([x1, x2]) =>
+      A([[x1, 499], [x2 - 8, 499]], C.amber));
+    A([[470, 561], [470, 652]], C.red);
+
+    // Monitoreo / autoscaling
+    A([[1750, 538], [1750, 692]], C.amber);
+    A([[1770, 739], [1802, 739]], C.amber);
+    A([[2000, 739], [2032, 739]], C.amber);
+    A([[2115, 778], [2115, 840], [1545, 840], [1545, 546]], C.amber, { dash: "7 5" });
+
+    // 2 → 3
+    A([[1390, 538], [1390, 880], [875, 880], [875, 982]], C.gray);
+
+    // Capa 3 fila de infraestructura
+    [[380, 420], [560, 600], [760, 800], [950, 990], [1150, 1190]].forEach(([x1, x2]) =>
+      A([[x1, 1029], [x2 - 8, 1029]], C.green));
+
+    // acceso del usuario
+    A([[240, 248], [240, 300], [176, 300], [176, 1279], [192, 1279]], C.blue, { dash: "7 5" });
+    [[380, 420], [570, 610], [770, 810], [940, 980], [1100, 1140]].forEach(([x1, x2]) =>
+      A([[x1, 1279], [x2 - 8, 1279]], C.green));
+
+    // retorno de la URL
+    A([[1400, 1279], [2255, 1279], [2255, 209], [2219, 209]], C.blue, { dash: "7 5" });
+
+    const defs = React.createElement("defs", { key: "defs" },
+      Object.keys(heads).map(color => React.createElement("marker", {
+        key: color, id: "ah-" + color.replace("#", ""), viewBox: "0 0 10 10", refX: "9", refY: "5",
+        markerWidth: "7", markerHeight: "7", orient: "auto-start-reverse"
+      }, React.createElement("path", { d: "M0 0 L10 5 L0 10 z", fill: color })))
+    );
+
+    const diamond = React.createElement("polygon", {
+      key: "diamond", points: "470,437 540,499 470,561 400,499",
+      fill: "#fbe6c8", stroke: C.amber, strokeWidth: 2
+    });
+
+    const connectors = React.createElement("svg", {
+      width: 2320, height: 1580, style: { display: "block" }
+    }, defs, diamond, a);
+
+    return {
+      connectors,
+      appUrl: this.props.appUrl ?? "app.local",
+      showLegend: this.props.showLegend ?? true,
+      showNotes: this.props.showNotes ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>
