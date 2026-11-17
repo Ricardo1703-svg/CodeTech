@@ -592,7 +592,7 @@
       </div>
       <div class="cta-row reveal" style="--d:.25s">
         <a href="#proyectos" class="btn btn-primary">Ver proyectos<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <button type="button" class="btn btn-ghost" data-print title="Abre el diálogo de impresión: elegí «Guardar como PDF»"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>Descargar CV</button>
+        <a href="Curr%C3%ADculum.pdf" download="CV - Ricardo Álvarez.pdf" class="btn btn-ghost"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>Descargar CV</a>
         <a href="https://github.com/Ricardo1703-svg" target="_blank" rel="noopener" class="btn btn-ghost btn-square" aria-label="GitHub (se abre en otra pestaña)"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg></a>
         <a href="mailto:ralvares961@gmail.com" class="btn btn-ghost btn-square" aria-label="Enviar correo"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg></a>
       </div>
@@ -840,11 +840,6 @@
           navigator.clipboard.writeText(text).then(done, function () { if (fallbackCopy(text)) done(); });
         } else if (fallbackCopy(text)) { done(); }
       });
-    });
-
-    // Descargar CV (imprimir / guardar como PDF)
-    document.querySelectorAll('[data-print]').forEach(function (b) {
-      b.addEventListener('click', function () { window.print(); });
     });
 
     // Barra de progreso de lectura
